@@ -7,9 +7,14 @@ import Link from "next/link";
 import styles from "./[slug].module.css";
 
 
-console.log("Styles", styles);
+interface postParams {
+    contents: string,
+    data: {
+        title: string
+    }
+}
 
-function Post({contents, data}: {[key:string]: string}) {
+function Post({contents, data}: postParams) {
     return (
         <>
             <Head>
