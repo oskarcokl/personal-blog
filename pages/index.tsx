@@ -7,6 +7,7 @@ function Home({ slugs }: {[key:string]: string[]}) {
         <>
             <h1>Oskars Website</h1>
             <h2>Blog</h2>
+            No blogs yet :)
             <div>
                 {slugs.map((slug: string) => {
                     return (
