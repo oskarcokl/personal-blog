@@ -3,6 +3,11 @@ import path from "path";
 import matter from "gray-matter";
 import {marked} from "marked";
 import Head from "next/head";
+import Link from "next/link";
+import styles from "./[slug].module.css";
+
+
+console.log("Styles", styles);
 
 function Post({contents, data}: {[key:string]: string}) {
     return (
@@ -12,24 +17,22 @@ function Post({contents, data}: {[key:string]: string}) {
             </Head>
             <div>
                 <h1>{data.title}</h1>
-                Contents bellow
                 <div dangerouslySetInnerHTML={{ __html: contents }} />
             </div>
+            <Link href="/" className={styles.homeButton}>
+                Back home
+            </Link>
         </>
     );
 };
 
 export async function getStaticPaths() {
     const files = fs.readdirSync("posts");
-    console.log("Files:", files);
-     
     const paths = files.map(filename => ({
         params: {
             slug: filename.replace(".md", ""),
         }
     }));
-
-    console.log("Paths:", paths);
 
     return {
         paths,
@@ -39,11 +42,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params: {slug}}: {[key:string]: {[key:string]: string}}) {
     const contents = fs.readFileSync(path.join("posts", slug + ".md")).toString();
-
     const parsedContents = matter(contents);
-
-    console.log("Contents", contents);
-    console.log("Parsed contents", parsedContents );
 
     const htmlString = marked.parse(parsedContents.content);
 
