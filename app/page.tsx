@@ -2,7 +2,10 @@ import fs from "fs";
 import Link from "next/link";
 import styles from "./index.module.css";
 
-function Home({ slugs }: {[key:string]: string[]}) {
+export default function Home() {
+    const slugs = fs.readdirSync("posts").map(filename => filename.replace(".md", ""));
+    
+
     return (
         <>
             <h1>Oskars Website</h1>
@@ -22,17 +25,3 @@ function Home({ slugs }: {[key:string]: string[]}) {
         </>
     )
 }
-
-export async function  getStaticProps() {
-    const files = fs.readdirSync("posts");
-    const slugs = files.map(filename => filename.replace(".md", ""));
-
-    return {
-        props: {
-            slugs
-        }
-    }
-}
-
-
-export default Home;
