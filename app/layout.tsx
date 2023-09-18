@@ -1,4 +1,6 @@
+import "./globals.css"
 import '../public/styles.css';
+import Head from "next/head";
 
 export const metadata = {
     title: 'Next.js',
@@ -12,7 +14,12 @@ export default function RootLayout({
     }) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <Head>
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link rel="preconnect" href="https://fonts.gstatic.com"/>
+                <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet"/>
+            </Head>
+            <body className='max-w-prose mx-auto mt-5'>{children}</body>
         </html>
     )
 }

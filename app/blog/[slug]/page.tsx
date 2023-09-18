@@ -29,12 +29,19 @@ export default function Page({params} : {params: {slug: string}}) {
                 <title>{parsedContents.data.title}</title>
             </Head>
             <div>
-                <h1>{parsedContents.data.title}</h1>
-                <div dangerouslySetInnerHTML={markup} />
+                <h1 className="text-center text-4xl">{parsedContents.data.title}</h1>
+                <div className="mt-5" dangerouslySetInnerHTML={markup} />
             </div>
-            <Link href="/" className={styles.homeButton}>
-                Back home
-            </Link>
+            <div className="flex flex-row justify-between mt-10">
+                <div>
+                    <Link href="/">
+                        Back home
+                    </Link>
+                </div>
+                <div>
+                    <Link href="mailto: oskar.cokl@gmail.com">oskar.cokl@gmail.com</Link>
+                </div>
+            </div>
         </>
     );
 }
