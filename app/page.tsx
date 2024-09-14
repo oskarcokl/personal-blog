@@ -9,7 +9,7 @@ export default function Home() {
             <div>
                 <h1 className="text-center text-5xl">Oskars Website</h1>
                 <h3 className="text-center text-1xl mt-1">
-                    My small little corner of the internet.
+                    My little corner of the internet.
                 </h3>
             </div>
             <div>
