@@ -4,7 +4,6 @@ import {marked} from "marked";
 import path from "path";
 import Head from "next/head";
 import Link from "next/link";
-import styles from "./blog.module.css";
 
 
 export async function generateStaticParams() {
