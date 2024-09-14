@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     rel="stylesheet"
                 />
             </Head>
-            <body className={"max-w-prose mx-auto mt-5 h-screen bg-stone-50 " + playfiar.className}>
+            <body className={" max-w-prose mx-auto mt-5 h-screen bg-stone-50 " + playfiar.className}>
                 <nav className="flex gap-3 justify-center">
                     <Link className={pathname === '/' ? 'text-black' : ''} href="/">
                         Home
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </Link>
                 </nav>
                 <hr className="my-3 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10" />
-                <div className="content h-5/6">{children}</div>
+                <div className="px-3 md:px-0 content h-5/6">{children}</div>
                 <footer>
                     <h4 className="text-center text-gray-400">
                         contact: <a href="mailto: oskar.cokl@gmail.com">oskar.cokl@gmail.com</a>
