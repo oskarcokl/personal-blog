@@ -7,3 +7,9 @@
         font-family: 'B612'
     }
 }
+
+@media print {
+    .no-print {
+        display: none;
+    }
+}

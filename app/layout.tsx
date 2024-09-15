@@ -6,6 +6,10 @@ import Link from "next/link"
 import Head from "next/head";
 import { usePathname } from "next/navigation"
 import { Playfair_Display} from "@next/font/google"
+import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
+import { config } from "@fortawesome/fontawesome-svg-core";
+
+config.autoAddCss = false;
 
     const playfiar = Playfair_Display({
         subsets: ['latin-ext'],
@@ -25,13 +29,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     rel="stylesheet"
                 />
             </Head>
-            <body className={" max-w-prose mx-auto mt-5 h-screen bg-stone-50 " + playfiar.className}>
-                <nav className="flex gap-3 justify-center">
+            <body
+                className={' max-w-prose mx-auto h-screen bg-stone-50 ' + playfiar.className}>
+                <nav className="flex gap-3 justify-center no-print mt-3">
                     <Link className={pathname === '/' ? 'text-black' : ''} href="/">
                         Home
                     </Link>
                     <Link className={pathname === '/now' ? 'text-black' : ''} href="/now">
                         Now
+                    </Link>
+                    <Link className={pathname === '/CV' ? 'text-black' : ''} href="/CV">
+                        CV
                     </Link>
                     <Link
                         className={
@@ -44,8 +52,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </Link>
                 </nav>
                 <hr className="my-3 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10" />
-                <div className="px-3 md:px-0 content h-5/6">{children}</div>
-                <footer>
+                <div className="px-3 md:px-0 content">{children}</div>
+                <footer className="no-print">
                     <h4 className="text-center text-gray-400">
                         contact: <a href="mailto: oskar.cokl@gmail.com">oskar.cokl@gmail.com</a>
                     </h4>
