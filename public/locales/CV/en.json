@@ -1,0 +1,84 @@
+{
+    "pfpAlt": "Oskars picture",
+    "dateOfBirth": {
+        "text": "Date of birth",
+        "date": "21. 5. 1997"
+    },
+    "nationality": {
+        "text": "Nationality",
+        "nationality": "Slovenian"
+    },
+    "contact": "Contact",
+    "summary": {
+        "title": "Summary",
+        "text": "I am a web developer with a passion for web technologies. I love solving peoples problems with software solutions. I'm always willing to learn, highly motivated, self driven and persistent. I have solid analytical, communicational, leadership and problem solving skills that I have developed through my work experience and college education."
+    },
+    "skills": {
+        "title": "Skills",
+        "text": "Skilled with javascript, typescript and python, proficient in vue, node.js, HTML5, css. Good knowledge of SQL, PowerBI, design patterns. Adapt at Next.js, Go and PHP."
+    },
+    "workExperience": {
+        "title": "Work experience",
+        "jobs": [
+            {
+                "period": "1. 10. 2021 - current",
+                "position": "Software developer",
+                "company": "iPROM d.o.o.",
+                "description": [
+                    "Extensive frontend work on infrastructure for serving ads, working on features for AdTech platform. Data visualisation using PowerBI, data analysis, extensive debugging through the entire stack and support work for coworkers and clients, worked with and created API endpoints, cookies, javascript/vue.",
+                    "Version control (gitlab/git), setting up CI/CD pipelines, project management, maintenance and collaboration with different departments",
+                    "Onboarding coworkers, mentoring work, public speaking on internal meetings, collaborating with clients to integrate software solutions and alleviate any issues."
+                ],
+                "individualProjects": {
+                    "title": "Individual projects",
+                    "projects": [
+                        {
+                            "name": "Debugger",
+                            "description": "Took ownership of internal tool used for debugging the serving of ads. Gave the product new life and added highly request features."
+                        },
+                        {
+                            "name": "OpenRTB interstitial ad serving",
+                            "description": "Serving interstitial ads according to OpenRTB specification. Was a technical challenge because the specification is sparse and publishers don't adhere to it."
+                        },
+                        {
+                            "name": "Managing extensive infrastructure upgrade",
+                            "description": "Managing the transition from old software that was no longer being maintained to newer software solutions that were actively being worked on."
+                        },
+                        {
+                            "name": "Prebid wrapper for GAM",
+                            "description": "Developed a custom solution to integrate Prebid with Google Ad Manager (GAM)."
+                        },
+                        {
+                            "name": "Integrating ad data with CRM",
+                            "description": "Developed infrastructure to send customer data gathered from ads to clients CRM system."
+                        },
+                        {
+                            "name": "User Targeting with Machine Learning",
+                            "description": "Developed a model for user targeting. Set up the entire architecture for data acquisition, processing and model training."
+                        }
+                    ]
+                }
+            },
+            {
+                "period": "1. 10. 2020 - 15. 10. 2020",
+                "position": "Technical Support",
+                "company": "University of Ljubljana, Faculty of Arts",
+                "description": [
+                    "Technical assistance with remote computer use.",
+                    "Technical support for classroom computer use.",
+                    "Technical assistance with audio and other equipment in the lecture hall."
+                ]
+            },
+            {
+                "period": "13. 2. 2020 - 14. 2. 2020",
+                "position": "Event Organization Assistance",
+                "company": "University of Ljubljana, Faculty of Computer and Information Science",
+                "description": [
+                    "Presentation of Microsoft HoloLens glasses to visitors on the information day.",
+                    "General assistance during the information day."
+                ]
+            }
+        ]
+    },
+    "download": "Download CV"
+}

@@ -3,7 +3,7 @@ export default function WorkDescription({descriptions}: {descriptions: string[]}
         <div>
             <ul className="list-disc list-inside mt-1">
                 {descriptions.map(description =>
-                    <li>
+                    <li key={description}>
                         {description}
                     </li>
                 )}
