@@ -112,7 +112,7 @@ export default function CV() {
                         </p>
                         <p>
                             {cvData?.education.location} {cvData?.education.from}-
-                            {cvData?.education.from}
+                            {cvData?.education.to}
                         </p>
                     </div>
 
