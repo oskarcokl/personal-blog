@@ -5,16 +5,16 @@ import '../public/styles.css';
 import Link from "next/link"
 import Head from "next/head";
 import { usePathname } from "next/navigation"
-import { Playfair_Display} from "@next/font/google"
+import { Noto_Serif_Georgian } from "@next/font/google"
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import { config } from "@fortawesome/fontawesome-svg-core";
 
 config.autoAddCss = false;
 
-    const playfiar = Playfair_Display({
-        subsets: ['latin-ext'],
-        weight: ['400', '700'],
-    });
+const georgian = Noto_Serif_Georgian({
+    subsets: ['latin'],
+    weight: ['400', '700']
+})
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname()
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 />
             </Head>
             <body
-                className={' max-w-prose mx-auto h-screen bg-stone-50 ' + playfiar.className}>
+                className={'mx-auto min-h-screen bg-stone-50 ' + georgian.className}>
                 <nav className="flex gap-3 justify-center no-print mt-3">
                     <Link className={pathname === '/' ? 'text-black' : ''} href="/">
                         Home
@@ -51,8 +51,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         Blog
                     </Link>
                 </nav>
-                <hr className="my-3 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10" />
-                <div className="px-3 md:px-0 content">{children}</div>
+                <hr className="max-w-prose my-3 mx-auto h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10" />
+                <div className="content">{children}</div>
                 <footer className="no-print">
                     <h4 className="text-center text-gray-400">
                         contact: <a href="mailto: oskar.cokl@gmail.com">oskar.cokl@gmail.com</a>

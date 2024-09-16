@@ -4,6 +4,7 @@ import {marked} from "marked";
 import path from "path";
 import Head from "next/head";
 import Link from "next/link";
+import DefaultLayout from "@/components/DefaultLayout";
 
 
 export async function generateStaticParams() {
@@ -24,23 +25,20 @@ export default function Page({params} : {params: {slug: string}}) {
 
     return (
         <>
-            <Head>
-                <title>{parsedContents.data.title}</title>
-            </Head>
-            <div>
-                <h1 className="text-center text-4xl">{parsedContents.data.title}</h1>
-                <div className="mt-5" dangerouslySetInnerHTML={markup} />
-            </div>
-            <div className="flex flex-row justify-between mt-10">
+            <DefaultLayout>
                 <div>
-                    <Link href="/">
-                        Back home
-                    </Link>
+                    <h1 className="text-center text-4xl">{parsedContents.data.title}</h1>
+                    <div className="mt-5" dangerouslySetInnerHTML={markup} />
                 </div>
-                <div>
-                    <Link href="mailto: oskar.cokl@gmail.com">oskar.cokl@gmail.com</Link>
+                <div className="flex flex-row justify-between mt-10">
+                    <div>
+                        <Link href="/">Back home</Link>
+                    </div>
+                    <div>
+                        <Link href="mailto: oskar.cokl@gmail.com">oskar.cokl@gmail.com</Link>
+                    </div>
                 </div>
-            </div>
+            </DefaultLayout>
         </>
     );
 }
