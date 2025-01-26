@@ -21,14 +21,13 @@ export const data = {
                 position: 'Frontend developer',
                 company: 'iPROM d.o.o.',
                 description: [
-                    'Shipped user facing features to empower publishers and increase their ad revenue.',
-                    'Extended internal debugger functionality to empower non technical personal to identify and fix publisher side ad serving problems.',
-                    'Increased stability of ad serving scripts and reduced bug tickets by 50%.',
-                    'Hold the fastest ticket resolution time in the entire company and high customer satisfaction.',
+                    'Worked and shipped features on Ad Tech system serving millions of ads daily.',
+                    'Leading the development of a new product for capturing ad creatives using React.',
+                    'Extended internal debugging tool functionality to empower non technical personal to identify and fix publisher side ad serving problems.',
+                    'Increased stability of ad serving scripts.',
                     'Received a company award for excellence for exceptional work.',
                     'Developed a tool to help trafficking team report campaign launch faster.',
-                    'Lead development of custom ad format solution which helped retain a key customer.',
-                    'Built PowerBI dashboards to help trafficking team monitor active ad campaigns.',
+                    'Lead development of new ad format solution which helped retain a key customer.',
                     'Lead development of Ads.txt management tool which increased the Yield teams productivity.',
                     'Developed CI/CD pipelines and development environments to increase developer productivity and increase deploy frequency.',
                 ],
@@ -97,7 +96,7 @@ export const data = {
                 },
                 {
                     name: 'Version control',
-                    comment: ['Git'],
+                    comment: 'Git 4 years',
                 },
                 {
                     name: 'Agile Development',
