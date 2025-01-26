@@ -33,19 +33,14 @@ export default function CV() {
     return (
         <CVLayout>
             <div className="print:w-full print:m-0">
-                <div>
-                    <div className=''>
-                        <h1 className="text-2xl mt-2">Oskar Čokl</h1>
-                    </div>
-                    <Contact />
-                    <section className="mt-4 flex flex-col gap-4">
-                        <Summary title={cvData?.summary.title || ''} text={cvData?.summary.text || ''} />
-                        <Skills title={cvData.skills.title || ''} mainSkills={cvData.skills.mainSkills} otherRelevantSkills={cvData.skills.otherRelevantSkills} workFlowSkills={cvData.skills.workFlowSkills} />
-                        <WorkExperience title={cvData?.workExperience.title || ''} jobs={cvData?.workExperience.jobs || []} />
-                        <Education title={cvData?.education.title || ''} degree={cvData?.education.degree || ''} school={cvData?.education.school || ''} university={cvData?.education.university || ''} location={cvData?.education.location || ''} from={cvData?.education.from || ''} to={cvData?.education.to || ''} />
-                        <LanguageSkills title={cvData?.languageSkills.title || ''} languages={cvData?.languageSkills.languages || []} />
-                    </section>
-                </div>
+                <CVTitle />
+                <section className="mt-1 flex flex-col gap-2">
+                    <Summary title={cvData?.summary.title || ''} text={cvData?.summary.text || ''} />
+                    <Skills title={cvData.skills.title || ''} mainSkills={cvData.skills.mainSkills} otherRelevantSkills={cvData.skills.otherRelevantSkills} workFlowSkills={cvData.skills.workFlowSkills} />
+                    <WorkExperience title={cvData?.workExperience.title || ''} jobs={cvData?.workExperience.jobs || []} />
+                    <Education title={cvData?.education.title || ''} degree={cvData?.education.degree || ''} school={cvData?.education.school || ''} university={cvData?.education.university || ''} location={cvData?.education.location || ''} from={cvData?.education.from || ''} to={cvData?.education.to || ''} />
+                    <LanguageSkills title={cvData?.languageSkills.title || ''} languages={cvData?.languageSkills.languages || []} />
+                </section>
             </div>
             <div className="flex justify-end mt-2">
                 <button
@@ -74,29 +69,34 @@ function Summary(props: { title: string, text: string }) {
     )
 }
 
+function CVTitle() {
+    return <div>
+        <h1 className="text-2xl">Oskar Čokl</h1>
+        <Contact />
+    </div>
+}
+
 function Contact() {
     return (
-        <section className="flex flex-row flex-wrap gap-1 mt-3">
-            <div className='flex gap-3'>
-                <span>
-                    <FontAwesomeIcon icon={faEnvelope} />{' '}
-                    <a href={'mailto: oskar.cokl@gmail.com'}>oskar.cokl@gmail.com</a>
-                </span>
-                <span className='no-print'>
-                    <FontAwesomeIcon icon={faGithub} />{' '}
-                    <a href={'https://github.com/oskarcokl'} target="_blank">
-                        GitHub
-                    </a>
-                </span>
-                <span className='no-print'>
-                    <FontAwesomeIcon icon={faLinkedin} />{' '}
-                    <a
-                        href={'https://www.linkedin.com/in/oskar-%C4%8Dokl-994b9613b/'}
-                        target="_blank">
-                        Linkedin
-                    </a>
-                </span>
-            </div>
+        <section className='flex flex-row gap-3'>
+            <span>
+                <FontAwesomeIcon icon={faEnvelope} />{' '}
+                <a href={'mailto: oskar.cokl@gmail.com'}>oskar.cokl@gmail.com</a>
+            </span>
+            <span className='no-print'>
+                <FontAwesomeIcon icon={faGithub} />{' '}
+                <a href={'https://github.com/oskarcokl'} target="_blank">
+                    GitHub
+                </a>
+            </span>
+            <span className='no-print'>
+                <FontAwesomeIcon icon={faLinkedin} />{' '}
+                <a
+                    href={'https://www.linkedin.com/in/oskar-%C4%8Dokl-994b9613b/'}
+                    target="_blank">
+                    Linkedin
+                </a>
+            </span>
         </section>
     )
 }
@@ -139,7 +139,7 @@ function Education(props: { title: string, degree: string, school: string, unive
 
 function Skills(props: typeof data.skills) {
     return (
-        <section className='flex flex-col gap-4'>
+        <section className='flex flex-col gap-2'>
             <SkillSection title={props.mainSkills.title} skills={props.mainSkills.skills} />
             <SkillSection title={props.otherRelevantSkills.title} skills={props.otherRelevantSkills.skills} />
             <SkillSection title={props.workFlowSkills.title} skills={props.workFlowSkills.skills} />

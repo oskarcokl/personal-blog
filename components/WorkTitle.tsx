@@ -1,10 +1,10 @@
 export default function WorkTitle({ period, position, company }: { period: string, position: string, company: string }) {
     return (
-        <div className="mt-1">
-            <h1 className="text-lg">
+        <div className="">
+            <h1 className="text-base">
                 <b>{position}</b> {company}
             </h1>
-            <h3 className="text-md">{period}</h3>
+            <h3 className="text-sm">{period}</h3>
         </div>
     );
 }
