@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import WorkTitle from '@/components/WorkTitle';
 import WorkDescription from '@/components/WorkDescription';
 import { useEffect, useState } from 'react';
-import { CVData } from './CVData';
+import { CVData, Job } from './CVData';
 import CVLayout from '@/components/CVLayout';
 import SectionTitle from '@/components/SectionTitle';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -36,104 +36,14 @@ export default function CV() {
                     <div className=''>
                         <h1 className="text-3xl mt-2">Oskar Čokl</h1>
                     </div>
-                    <div className="flex flex-row flex-wrap gap-1 mt-3">
-                        <div>
-                            <p className='flex gap-3'>
-                                <span><b>{cvData?.dateOfBirth.text}:</b> {cvData?.dateOfBirth.date}</span><span><b>{cvData?.nationality.text}:</b> {cvData?.nationality.nationality}</span>
-                            </p>
-                        </div>
-                        <div className='flex gap-3'>
-                            <span>
-                                <FontAwesomeIcon icon={faEnvelope} />{' '}
-                                <a href={'mailto: oskar.cokl@gmail.com'}>oskar.cokl@gmail.com</a>
-                            </span>
-                            <span>
-                                <FontAwesomeIcon icon={faPhone} />{' '}
-                                <a href={'tel:+38640981375'}>(+386) 40981375</a>
-                            </span>
-                            <span>
-                                <FontAwesomeIcon icon={faGithub} />{' '}
-                                <a href={'https://github.com/oskarcokl'} target="_blank">
-                                    GitHub
-                                </a>
-                            </span>
-                            <span>
-                                <FontAwesomeIcon icon={faLinkedin} />{' '}
-                                <a
-                                    href={'https://www.linkedin.com/in/oskar-%C4%8Dokl-994b9613b/'}
-                                    target="_blank">
-                                    Linkedin
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="mt-4">
-                        <div>
-                            <SectionTitle title={cvData?.summary.title} />
-                            <p>{cvData?.summary.text}</p>
-                        </div>
-
-                        <div>
-                            <SectionTitle title={cvData?.workExperience.title} />
-                            {cvData?.workExperience.jobs.map((job) => {
-                                return (
-                                    <>
-                                        <WorkTitle
-                                            period={job.period}
-                                            position={job.position}
-                                            company={job.company}
-                                        />
-                                        <WorkDescription descriptions={job.description} />
-                                    </>
-                                );
-                            })}
-                        </div>
-
-                        <div>
-                            <SectionTitle title={cvData?.education.title} />
-                            <p>
-                                <b>{cvData?.education.degree}</b> {cvData?.education.school},{' '}
-                                {cvData?.education.university}
-                            </p>
-                            <p>
-                                {cvData?.education.location} {cvData?.education.from}-
-                                {cvData?.education.to}
-                            </p>
-                        </div>
-
-                        <div>
-                            <SectionTitle title={cvData?.skills.title} />
-                            <div>
-                                <p>
-                                    <b>{cvData?.skills.expert.title}:</b>{' '}
-                                    {cvData?.skills.expert.skills.join(', ')}
-                                </p>
-                            </div>
-                            <div>
-                                <p>
-                                    <b>{cvData?.skills.intermediate.title}:</b>{' '}
-                                    {cvData?.skills.intermediate.skills.join(', ')}
-                                </p>
-                            </div>
-                            <div>
-                                <p>
-                                    <b>{cvData?.skills.beginner.title}:</b>{' '}
-                                    {cvData?.skills.beginner.skills.join(', ')}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <SectionTitle title={cvData?.languageSkills.title} />
-                            {cvData?.languageSkills.languages.map((language) => {
-                                return (
-                                    <p>
-                                        <b>{language.language}:</b> {language.level}
-                                    </p>
-                                );
-                            })}
-                        </div>
-                    </div>
+                    <Contact />
+                    <section className="mt-4">
+                        <Summary title={cvData?.summary.title || ''} text={cvData?.summary.text || ''} />
+                        <Skills title={cvData?.skills.title || ''} expert={cvData?.skills.expert || { title: '', skills: [] }} intermediate={cvData?.skills.intermediate || { title: '', skills: [] }} beginner={cvData?.skills.beginner || { title: '', skills: [] }} />
+                        <WorkExperience title={cvData?.workExperience.title || ''} jobs={cvData?.workExperience.jobs || []} />
+                        <Education title={cvData?.education.title || ''} degree={cvData?.education.degree || ''} school={cvData?.education.school || ''} university={cvData?.education.university || ''} location={cvData?.education.location || ''} from={cvData?.education.from || ''} to={cvData?.education.to || ''} />
+                        <LanguageSkills title={cvData?.languageSkills.title || ''} languages={cvData?.languageSkills.languages || []} />
+                    </section>
                 </div>
             </div>
             <div className="flex justify-end mt-2">
@@ -151,4 +61,118 @@ export default function CV() {
 
 function downloadPDF() {
     window.print();
+}
+
+
+function Summary(props: { title: string, text: string }) {
+    return (
+        <section>
+            <SectionTitle title={props.title} />
+            <p>{props.text}</p>
+        </section>
+    )
+}
+
+function Contact() {
+    return (
+        <section className="flex flex-row flex-wrap gap-1 mt-3">
+            <div className='flex gap-3'>
+                <span>
+                    <FontAwesomeIcon icon={faEnvelope} />{' '}
+                    <a href={'mailto: oskar.cokl@gmail.com'}>oskar.cokl@gmail.com</a>
+                </span>
+                <span className='no-print'>
+                    <FontAwesomeIcon icon={faGithub} />{' '}
+                    <a href={'https://github.com/oskarcokl'} target="_blank">
+                        GitHub
+                    </a>
+                </span>
+                <span className='no-print'>
+                    <FontAwesomeIcon icon={faLinkedin} />{' '}
+                    <a
+                        href={'https://www.linkedin.com/in/oskar-%C4%8Dokl-994b9613b/'}
+                        target="_blank">
+                        Linkedin
+                    </a>
+                </span>
+            </div>
+        </section>
+    )
+}
+
+function WorkExperience(props: { title: string, jobs: Job[] }) {
+    return (
+        <section>
+            <SectionTitle title={props.title} />
+            {props.jobs.map((job) => {
+                return (
+                    <>
+                        <WorkTitle
+                            period={job.period}
+                            position={job.position}
+                            company={job.company}
+                        />
+                        <WorkDescription descriptions={job.description} />
+                    </>
+                );
+            })}
+        </section>
+    )
+}
+
+function Education(props: { title: string, degree: string, school: string, university: string, location: string, from: string, to: string }) {
+    return (
+        <section>
+            <SectionTitle title={props.title} />
+            <p>
+                <b>{props.degree}</b> {props.school},{' '}
+                {props.university}
+            </p>
+            <p>
+                {props.location} {props.from}-
+                {props.to}
+            </p>
+        </section>
+    )
+}
+
+function Skills(props: { title: string, expert: { title: string, skills: string[] }, intermediate: { title: string, skills: string[] }, beginner: { title: string, skills: string[] } }) {
+    return (
+        <section>
+            <SectionTitle title={props.title} />
+            <div>
+                <p>
+                    <b>{props.expert.title}:</b>{' '}
+                    {props.expert.skills.join(', ')}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <b>{props.intermediate.title}:</b>{' '}
+                    {props.intermediate.skills.join(', ')}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <b>{props.beginner.title}:</b>{' '}
+                    {props.beginner.skills.join(', ')}
+                </p>
+            </div>
+        </section>
+    )
+}
+
+function LanguageSkills(props: { title: string, languages: { language: string, level: string }[] }) {
+    return (
+        <section>
+            <SectionTitle title={props.title} />
+            {props.languages.map((language) => {
+                return (
+                    <p>
+                        <b>{language.language}:</b> {language.level}
+                    </p>
+                );
+            })}
+        </section>
+    )
 }
