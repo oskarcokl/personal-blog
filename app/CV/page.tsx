@@ -10,24 +10,25 @@ import CVLayout from '@/components/CVLayout';
 import SectionTitle from '@/components/SectionTitle';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import './print.css';
+import { data } from '@/public/locales/CV/en';
 
 export default function CV() {
     const [language, setLanguage] = useState('en');
-    const [cvData, setCvData] = useState<CVData | null>(null);
+    const [cvData, setCvData] = useState<typeof data>(data);
 
     const switchLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setLanguage(e.target.value);
     };
 
-    useEffect(() => {
-        fetchCVData();
-    }, [language]);
+    // useEffect(() => {
+    //     fetchCVData();
+    // }, [language]);
 
-    const fetchCVData = async () => {
-        const response = await fetch(`/locales/CV/${language}.json`);
-        const data: CVData = await response.json();
-        setCvData(data);
-    };
+    // const fetchCVData = async () => {
+    //     const response = await fetch(`/locales/CV/${language}.json`);
+    //     const data: typeof cvData = await response.json();
+    //     setCvData(data);
+    // };
 
     return (
         <CVLayout>
@@ -39,7 +40,7 @@ export default function CV() {
                     <Contact />
                     <section className="mt-4">
                         <Summary title={cvData?.summary.title || ''} text={cvData?.summary.text || ''} />
-                        <Skills title={cvData?.skills.title || ''} expert={cvData?.skills.expert || { title: '', skills: [] }} intermediate={cvData?.skills.intermediate || { title: '', skills: [] }} beginner={cvData?.skills.beginner || { title: '', skills: [] }} />
+                        <Skills title={cvData.skills.title || ''} mainSkills={cvData.skills.mainSkills} otherRelevantSkills={cvData.skills.otherRelevantSkills} workFlowSkills={cvData.skills.workFlowSkills} />
                         <WorkExperience title={cvData?.workExperience.title || ''} jobs={cvData?.workExperience.jobs || []} />
                         <Education title={cvData?.education.title || ''} degree={cvData?.education.degree || ''} school={cvData?.education.school || ''} university={cvData?.education.university || ''} location={cvData?.education.location || ''} from={cvData?.education.from || ''} to={cvData?.education.to || ''} />
                         <LanguageSkills title={cvData?.languageSkills.title || ''} languages={cvData?.languageSkills.languages || []} />
@@ -136,26 +137,33 @@ function Education(props: { title: string, degree: string, school: string, unive
     )
 }
 
-function Skills(props: { title: string, expert: { title: string, skills: string[] }, intermediate: { title: string, skills: string[] }, beginner: { title: string, skills: string[] } }) {
+function Skills(props: typeof data.skills) {
     return (
         <section>
             <SectionTitle title={props.title} />
             <div>
                 <p>
-                    <b>{props.expert.title}:</b>{' '}
-                    {props.expert.skills.join(', ')}
+                    <h3>{props.mainSkills.title}:</h3>{' '}
+                    <div>
+                        {props.mainSkills.skills.map((skill) => {
+                            return (
+                                <>{skill.name}</>
+                            )
+                        })}
+                    </div>
+
                 </p>
             </div>
             <div>
                 <p>
-                    <b>{props.intermediate.title}:</b>{' '}
-                    {props.intermediate.skills.join(', ')}
+                    <h3>{props.otherRelevantSkills.title}:</h3>{' '}
+                    {/* {props.intermediate.skills.join(', ')} */}
                 </p>
             </div>
             <div>
                 <p>
-                    <b>{props.beginner.title}:</b>{' '}
-                    {props.beginner.skills.join(', ')}
+                    <h3>{props.workFlowSkills.title}:</h3>{' '}
+                    {/* {props.beginner.skills.join(', ')} */}
                 </p>
             </div>
         </section>
