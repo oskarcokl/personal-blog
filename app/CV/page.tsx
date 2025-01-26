@@ -131,14 +131,14 @@ function SkillSection(props: { title: string, skills: { name: string, comment: s
     return <section>
         <SectionTitle title={props.title} />
         <div className='grid grid-cols-2'>
-            <div className='flex flex-col gap-1'>
+            <div className='flex flex-col'>
                 {props.skills.map((skill) => {
                     return (
                         <span>{skill.name}</span>
                     )
                 })}
             </div>
-            <div className='flex flex-col gap-1'>
+            <div className='flex flex-col'>
                 {props.skills.map((skill) => {
                     return (
                         <span>{Array.isArray(skill.comment) ? skill.comment.join(', ') : skill.comment}</span>
