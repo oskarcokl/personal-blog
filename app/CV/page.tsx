@@ -38,7 +38,7 @@ export default function CV() {
                         <h1 className="text-2xl mt-2">Oskar Čokl</h1>
                     </div>
                     <Contact />
-                    <section className="mt-4">
+                    <section className="mt-4 flex flex-col gap-4">
                         <Summary title={cvData?.summary.title || ''} text={cvData?.summary.text || ''} />
                         <Skills title={cvData.skills.title || ''} mainSkills={cvData.skills.mainSkills} otherRelevantSkills={cvData.skills.otherRelevantSkills} workFlowSkills={cvData.skills.workFlowSkills} />
                         <WorkExperience title={cvData?.workExperience.title || ''} jobs={cvData?.workExperience.jobs || []} />
@@ -139,35 +139,34 @@ function Education(props: { title: string, degree: string, school: string, unive
 
 function Skills(props: typeof data.skills) {
     return (
-        <section>
-            <SectionTitle title={props.title} />
-            <div>
-                <p>
-                    <h3>{props.mainSkills.title}:</h3>{' '}
-                    <div>
-                        {props.mainSkills.skills.map((skill) => {
-                            return (
-                                <>{skill.name}</>
-                            )
-                        })}
-                    </div>
-
-                </p>
-            </div>
-            <div>
-                <p>
-                    <h3>{props.otherRelevantSkills.title}:</h3>{' '}
-                    {/* {props.intermediate.skills.join(', ')} */}
-                </p>
-            </div>
-            <div>
-                <p>
-                    <h3>{props.workFlowSkills.title}:</h3>{' '}
-                    {/* {props.beginner.skills.join(', ')} */}
-                </p>
-            </div>
+        <section className='flex flex-col gap-4'>
+            <SkillSection title={props.mainSkills.title} skills={props.mainSkills.skills} />
+            <SkillSection title={props.otherRelevantSkills.title} skills={props.otherRelevantSkills.skills} />
+            <SkillSection title={props.workFlowSkills.title} skills={props.workFlowSkills.skills} />
         </section>
     )
+}
+
+function SkillSection(props: { title: string, skills: { name: string, comment: string | string[] }[] }) {
+    return <section>
+        <SectionTitle title={props.title} />
+        <div className='grid grid-cols-2'>
+            <div className='flex flex-col gap-1'>
+                {props.skills.map((skill) => {
+                    return (
+                        <span>{skill.name}</span>
+                    )
+                })}
+            </div>
+            <div className='flex flex-col gap-1'>
+                {props.skills.map((skill) => {
+                    return (
+                        <span>{Array.isArray(skill.comment) ? skill.comment.join(', ') : skill.comment}</span>
+                    )
+                })}
+            </div>
+        </div>
+    </section>
 }
 
 function LanguageSkills(props: { title: string, languages: { language: string, level: string }[] }) {
