@@ -41,7 +41,7 @@ function downloadPDF() {
 }
 
 
-function Summary(props: { title: string, text: string }) {
+function Summary(props: typeof cvData.summary) {
     return (
         <section>
             <SectionTitle title={props.title} />
@@ -107,8 +107,7 @@ function Education(props: { title: string, degree: string, school: string, unive
         <section>
             <SectionTitle title={props.title} />
             <p>
-                <b>{props.degree}</b> {props.school},{' '}
-                {props.university}
+                <b>{props.degree}</b>, {props.school}, {props.university}
             </p>
             <p>
                 {props.location} {props.from}-

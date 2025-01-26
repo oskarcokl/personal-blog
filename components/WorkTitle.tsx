@@ -2,7 +2,7 @@ export default function WorkTitle({ period, position, company }: { period: strin
     return (
         <div className="">
             <h1 className="text-base">
-                <b>{position}</b> {company}
+                <b>{position}</b>, {company}
             </h1>
             <h3 className="text-sm">{period}</h3>
         </div>

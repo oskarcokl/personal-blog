@@ -18,25 +18,25 @@ export const data = {
         jobs: [
             {
                 period: '1. 10. 2021 - current',
-                position: 'Frontend developer',
+                position: 'Frontend Developer',
                 company: 'iPROM d.o.o.',
                 description: [
-                    'Worked and shipped features on Ad Tech system serving millions of ads daily.',
+                    'Worked on and shipped features for an Ad Tech system serving millions of ads daily.',
                     'Leading the development of a new product for capturing ad creatives using React.',
-                    'Extended internal debugging tool functionality to empower non technical personal to identify and fix publisher side ad serving problems.',
+                    'Extended internal debugging tool functionality to empower non-technical personnel to identify and fix publisher-side ad-serving problems.',
                     'Increased stability of ad serving scripts.',
                     'Received a company award for excellence for exceptional work.',
                     'Developed a tool to help trafficking team report campaign launch faster.',
-                    'Lead development of new ad format solution which helped retain a key customer.',
-                    'Lead development of Ads.txt management tool which increased the Yield teams productivity.',
-                    'Developed CI/CD pipelines and development environments to increase developer productivity and increase deploy frequency.',
+                    'Led the development of a new ad format solution that helped retain a key customer.',
+                    "Led the development of an Ads.txt management tool, which increased the Yield team's productivity.",
+                    'Developed CI/CD pipelines and development environments to boost developer productivity and increase deployment frequency.',
                 ],
             },
         ],
     },
     education: {
         title: 'Education',
-        degree: 'B. S. of Computer Science and Informatics',
+        degree: 'B.Sc. in Computer Science and Informatics',
         school: 'Faculty of Computer and Information Science',
         university: 'University of Ljubljana',
         location: 'Ljubljana, Slovenia',
@@ -58,11 +58,11 @@ export const data = {
                 },
                 {
                     name: 'NodeJS',
-                    comment: '1 years',
+                    comment: '1 year',
                 },
                 {
                     name: 'React',
-                    comment: '1 years',
+                    comment: '1 year',
                 },
             ],
         },
@@ -114,11 +114,11 @@ export const data = {
         },
     },
     languageSkills: {
-        title: 'Language skills',
+        title: 'Language Skills',
         languages: [
             {
                 language: 'Slovenian',
-                level: 'Native speaker',
+                level: 'Native Speaker',
             },
             {
                 language: 'English',
