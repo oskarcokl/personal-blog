@@ -35,7 +35,7 @@ export default function CV() {
             <div className="print:w-full print:m-0">
                 <div>
                     <div className=''>
-                        <h1 className="text-3xl mt-2">Oskar Čokl</h1>
+                        <h1 className="text-2xl mt-2">Oskar Čokl</h1>
                     </div>
                     <Contact />
                     <section className="mt-4">
