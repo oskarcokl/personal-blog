@@ -1,0 +1,41 @@
+@media print {
+    @page {
+        margin: 1cm;
+        size: A4 portrait;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 0 !important;
+        height: auto !important;
+    }
+
+    body {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    /* Reset any max-width constraints for print */
+    .max-w-3xl {
+        max-width: none !important;
+    }
+
+    /* Ensure content fits on one page */
+    .content {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* Remove any margins/padding that might cause extra space */
+    * {
+        margin-bottom: 0 !important;
+    }
+
+    /* Hide non-printable elements */
+    .no-print {
+        display: none !important;
+    }
+}

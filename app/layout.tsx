@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 />
             </Head>
             <body
-                className={'mx-auto min-h-screen bg-stone-50 ' + georgian.className}>
+                className={'print:m-0 print:p-0 mx-auto min-h-screen bg-stone-50 ' + georgian.className}>
                 <nav className="flex gap-3 justify-center no-print mt-3">
                     <Link className={pathname === '/' ? 'text-black' : ''} href="/">
                         Home
@@ -51,8 +51,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         Blog
                     </Link>
                 </nav>
-                <hr className="max-w-prose my-3 mx-auto h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10" />
-                <div className="content">{children}</div>
+                <hr className="max-w-prose my-3 mx-auto h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10 no-print" />
+                <main className="print:m-0 print:p-0">{children}</main>
                 <footer className="no-print">
                     <h4 className="text-center text-gray-400">
                         contact: <a href="mailto: oskar.cokl@gmail.com">oskar.cokl@gmail.com</a>

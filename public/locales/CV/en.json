@@ -11,7 +11,7 @@
     "contact": "Contact",
     "summary": {
         "title": "Summary",
-        "text": "Web developer with a passion for web technologies. I have over 3 years of professional experience and love solving problems with software solutions. I'm always willing to learn and highly motivated."
+        "text": "Fullstack web developer with a passion for web technologies. I have over 3 years of professional experience and love solving problems with software solutions. I'm always willing to learn and highly motivated."
     },
     "workExperience": {
         "title": "Work experience",
@@ -21,44 +21,57 @@
                 "position": "Frontend developer",
                 "company": "iPROM d.o.o.",
                 "description": [
-                    "Increased stability of ad serving scripts and reduced bug tickets by 50%.",
+                    "Shipped user facing features to empower publishers and increase their ad revenue.",
                     "Extended internal debugger functionality to empower non technical personal to identify and fix publisher side ad serving problems.",
-                    "Developed a tool to help trafficking team report campaign launch 66% faster.",
+                    "Increased stability of ad serving scripts and reduced bug tickets by 50%.",
+                    "Hold the fastest ticket resolution time in the entire company and high customer satisfaction.",
+                    "Received a company award for excellence for exceptional work.",
+                    "Developed a tool to help trafficking team report campaign launch faster.",
+                    "Lead development of custom ad format solution which helped retain a key customer.",
                     "Built PowerBI dashboards to help trafficking team monitor active ad campaigns.",
-                    "Added batch statistics reporting to logging system to reduce publisher site load by 50%.",
-                    "Developed dashboards to identify ad serving issues and reduce debugging time.",
                     "Lead development of Ads.txt management tool which increased the Yield teams productivity.",
                     "Developed CI/CD pipelines and development environments to increase developer productivity and increase deploy frequency."
                 ]
             }
         ]
     },
-    "education":
-        {
-            "title": "Education",
-            "degree": "B. S. of Computer Science and Informatics",
-            "school": "Faculty of Computer and Information Science",
-            "university": "University of Ljubljana",
-            "location": "Ljubljana, Slovenia",
-            "from": "9. 2017",
-            "to": "10. 2021"
-        },
+    "education": {
+        "title": "Education",
+        "degree": "B. S. of Computer Science and Informatics",
+        "school": "Faculty of Computer and Information Science",
+        "university": "University of Ljubljana",
+        "location": "Ljubljana, Slovenia",
+        "from": "9. 2017",
+        "to": "10. 2021"
+    },
     "skills": {
         "title": "Skills",
-        "expert":
-        {
+        "expert": {
             "title": "Expert",
-            "skills": ["JavaScript", "TypeScript", "Python", "HTML", "CSS", "GIT", "communication"]
+            "skills": [
+                "JavaScript",
+                "HTML",
+                "CSS",
+                "GIT",
+                "communication",
+                "ability to work in a team"
+            ]
         },
-        "intermediate":
-        {
+        "intermediate": {
             "title": "Intermediate",
-            "skills": ["Node.js", "Vue.js", "React.js", "SQL", "MongoDB", "design patterns", "restful API", "Linux"]
+            "skills": [
+                "TypeScript",
+                "React",
+                "Node.js",
+                "Tailwindcss",
+                "SQL databases",
+                "design patterns",
+                "Linux"
+            ]
         },
-        "beginner":
-        {
+        "beginner": {
             "title": "Beginner",
-            "skills": ["Go", "PHP", "Next.js"]
+            "skills": ["NextJS, Cypress"]
         }
     },
     "languageSkills": {
