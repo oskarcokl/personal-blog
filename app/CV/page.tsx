@@ -1,45 +1,26 @@
 'use client';
 
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import WorkTitle from '@/components/WorkTitle';
 import WorkDescription from '@/components/WorkDescription';
-import { useEffect, useState } from 'react';
-import { CVData, Job } from './CVData';
 import CVLayout from '@/components/CVLayout';
 import SectionTitle from '@/components/SectionTitle';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import './print.css';
-import { data } from '@/public/locales/CV/en';
+import { data as cvData } from '@/public/locales/CV/en';
 
 export default function CV() {
-    const [language, setLanguage] = useState('en');
-    const [cvData, setCvData] = useState<typeof data>(data);
-
-    const switchLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setLanguage(e.target.value);
-    };
-
-    // useEffect(() => {
-    //     fetchCVData();
-    // }, [language]);
-
-    // const fetchCVData = async () => {
-    //     const response = await fetch(`/locales/CV/${language}.json`);
-    //     const data: typeof cvData = await response.json();
-    //     setCvData(data);
-    // };
-
     return (
         <CVLayout>
             <div className="print:w-full print:m-0">
                 <CVTitle />
                 <section className="mt-1 flex flex-col gap-2">
-                    <Summary title={cvData?.summary.title || ''} text={cvData?.summary.text || ''} />
-                    <Skills title={cvData.skills.title || ''} mainSkills={cvData.skills.mainSkills} otherRelevantSkills={cvData.skills.otherRelevantSkills} workFlowSkills={cvData.skills.workFlowSkills} />
-                    <WorkExperience title={cvData?.workExperience.title || ''} jobs={cvData?.workExperience.jobs || []} />
-                    <Education title={cvData?.education.title || ''} degree={cvData?.education.degree || ''} school={cvData?.education.school || ''} university={cvData?.education.university || ''} location={cvData?.education.location || ''} from={cvData?.education.from || ''} to={cvData?.education.to || ''} />
-                    <LanguageSkills title={cvData?.languageSkills.title || ''} languages={cvData?.languageSkills.languages || []} />
+                    <Summary title={cvData.summary.title} text={cvData.summary.text} />
+                    <Skills title={cvData.skills.title} mainSkills={cvData.skills.mainSkills} otherRelevantSkills={cvData.skills.otherRelevantSkills} workFlowSkills={cvData.skills.workFlowSkills} />
+                    <WorkExperience title={cvData.workExperience.title} jobs={cvData.workExperience.jobs} />
+                    <Education title={cvData.education.title} degree={cvData.education.degree} school={cvData.education.school} university={cvData.education.university} location={cvData.education.location} from={cvData.education.from} to={cvData.education.to} />
+                    <LanguageSkills title={cvData.languageSkills.title} languages={cvData.languageSkills.languages} />
                 </section>
             </div>
             <div className="flex justify-end mt-2">
@@ -101,7 +82,7 @@ function Contact() {
     )
 }
 
-function WorkExperience(props: { title: string, jobs: Job[] }) {
+function WorkExperience(props: { title: string, jobs: typeof cvData.workExperience.jobs }) {
     return (
         <section>
             <SectionTitle title={props.title} />
@@ -137,7 +118,7 @@ function Education(props: { title: string, degree: string, school: string, unive
     )
 }
 
-function Skills(props: typeof data.skills) {
+function Skills(props: typeof cvData.skills) {
     return (
         <section className='flex flex-col gap-2'>
             <SkillSection title={props.mainSkills.title} skills={props.mainSkills.skills} />
