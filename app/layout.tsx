@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Link className={pathname === '/now' ? 'text-black' : ''} href="/now">
                         Now
                     </Link>
-                    <Link className={pathname === '/CV' ? 'text-black' : ''} href="/CV">
+                    <Link className={pathname.includes('/CV') ? 'text-black' : ''} href="/CV">
                         CV
                     </Link>
                     <Link
