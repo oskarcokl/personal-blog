@@ -1,13 +1,9 @@
-'use client'
-
 import "./globals.css"
 import '../public/styles.css';
-import Link from "next/link"
-import Head from "next/head";
-import { usePathname } from "next/navigation"
-import { Noto_Serif_Georgian } from "@next/font/google"
-import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
+import { Noto_Serif_Georgian, B612 } from "next/font/google"
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Navigation from "@/components/Navigation";
 
 config.autoAddCss = false;
 
@@ -16,41 +12,21 @@ const georgian = Noto_Serif_Georgian({
     weight: ['400', '700']
 })
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-    const pathname = usePathname()
+const b612 = B612({
+    subsets: ['latin'],
+    weight: ['400'],
+})
 
+export const metadata = {
+    title: "Oskar's Website",
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <Head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=B612&display=swap"
-                    rel="stylesheet"
-                />
-            </Head>
             <body
-                className={'print:m-0 print:p-0 mx-auto min-h-screen bg-stone-50 ' + georgian.className}>
-                <nav className="flex gap-3 justify-center no-print mt-3">
-                    <Link className={pathname === '/' ? 'text-black' : ''} href="/">
-                        Home
-                    </Link>
-                    <Link className={pathname === '/now' ? 'text-black' : ''} href="/now">
-                        Now
-                    </Link>
-                    <Link className={pathname.includes('/CV') ? 'text-black' : ''} href="/CV">
-                        CV
-                    </Link>
-                    <Link
-                        className={
-                            pathname.split('/')[1] === 'blog'
-                                ? 'text-black'
-                                : '' + ' cursor-default'
-                        }
-                        href="">
-                        Blog
-                    </Link>
-                </nav>
+                className={'print:m-0 print:p-0 mx-auto min-h-screen bg-stone-50 ' + b612.className + ' ' + georgian.className}>
+                <Navigation />
                 <hr className="max-w-prose my-3 mx-auto h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10 no-print" />
                 <main className="print:m-0 print:p-0">{children}</main>
                 <footer className="no-print">
