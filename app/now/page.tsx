@@ -1,6 +1,4 @@
-
 import DefaultLayout from "@/components/DefaultLayout";
-import Head from "next/head"
 
 export default function Page() {
     return (

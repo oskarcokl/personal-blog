@@ -26,7 +26,7 @@ export default function CVEN() {
         <button
           onClick={downloadPDF}
           className={
-            'no-print bg-sky-500 text-white px-3 py-1 right-0 uppercase rounded-md'
+            'no-print bg-sky-500 text-white px-3 py-1 right-0 uppercase rounded-md cursor-pointer'
           }>
           Download
         </button>
@@ -85,18 +85,16 @@ function WorkExperience(props: { title: string, jobs: typeof cvData.workExperien
   return (
     <section>
       <SectionTitle title={props.title} />
-      {props.jobs.map((job) => {
-        return (
-          <>
-            <WorkTitle
-              period={job.period}
-              position={job.position}
-              company={job.company}
-            />
-            <WorkDescription descriptions={job.description} />
-          </>
-        );
-      })}
+      {props.jobs.map((job, index) => (
+        <div key={index}>
+          <WorkTitle
+            period={job.period}
+            position={job.position}
+            company={job.company}
+          />
+          <WorkDescription descriptions={job.description} />
+        </div>
+      ))}
     </section>
   )
 }
@@ -131,18 +129,14 @@ function SkillSection(props: { title: string, skills: { name: string, comment: s
     <SectionTitle title={props.title} />
     <div className='grid grid-cols-2'>
       <div className='flex flex-col'>
-        {props.skills.map((skill) => {
-          return (
-            <span>{skill.name}</span>
-          )
-        })}
+        {props.skills.map((skill) => (
+          <span key={skill.name}>{skill.name}</span>
+        ))}
       </div>
       <div className='flex flex-col'>
-        {props.skills.map((skill) => {
-          return (
-            <span>{Array.isArray(skill.comment) ? skill.comment.join(', ') : skill.comment}</span>
-          )
-        })}
+        {props.skills.map((skill) => (
+          <span key={skill.name}>{Array.isArray(skill.comment) ? skill.comment.join(', ') : skill.comment}</span>
+        ))}
       </div>
     </div>
   </section>
@@ -152,13 +146,11 @@ function LanguageSkills(props: { title: string, languages: { language: string, l
   return (
     <section>
       <SectionTitle title={props.title} />
-      {props.languages.map((language) => {
-        return (
-          <p>
-            <b>{language.language}:</b> {language.level}
-          </p>
-        );
-      })}
+      {props.languages.map((language) => (
+        <p key={language.language}>
+          <b>{language.language}:</b> {language.level}
+        </p>
+      ))}
     </section>
   )
 }

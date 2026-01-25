@@ -2,7 +2,6 @@ import fs from "fs";
 import matter from "gray-matter";
 import {marked} from "marked";
 import path from "path";
-import Head from "next/head";
 import Link from "next/link";
 import DefaultLayout from "@/components/DefaultLayout";
 
@@ -16,8 +15,9 @@ export async function generateStaticParams() {
 }
 
 
-export default function Page({params} : {params: {slug: string}}) {
-    const post = fs.readFileSync(path.join("posts", params.slug + ".md"));
+export default async function Page({params} : {params: Promise<{slug: string}>}) {
+    const { slug } = await params;
+    const post = fs.readFileSync(path.join("posts", slug + ".md"));
     const parsedContents = matter(post);
     const html = marked.parse(parsedContents.content);
 
