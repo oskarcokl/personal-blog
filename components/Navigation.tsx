@@ -8,6 +8,7 @@ export default function Navigation() {
     const isHome = pathname === '/'
     const isNow = pathname === '/now'
     const isCV = pathname.includes('/CV')
+    const isGameDev = pathname.startsWith('/gamedev')
     const isBlog = pathname.split('/')[1] === 'blog'
 
     return (
@@ -26,6 +27,11 @@ export default function Navigation() {
                 <span className="text-black cursor-default">CV</span>
             ) : (
                 <Link href="/CV">CV</Link>
+            )}
+            {isGameDev ? (
+                <span className="text-black cursor-default">GameDev</span>
+            ) : (
+                <Link href="/gamedev">GameDev</Link>
             )}
             {isBlog ? (
                 <span className="text-black cursor-default">Blog</span>
