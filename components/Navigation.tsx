@@ -18,6 +18,11 @@ export default function Navigation() {
             ) : (
                 <Link href="/">Home</Link>
             )}
+            {isGameDev ? (
+                <span className="text-black cursor-default">Game Development</span>
+            ) : (
+                <Link href="/gamedev">Game Development</Link>
+            )}
             {isNow ? (
                 <span className="text-black cursor-default">Now</span>
             ) : (
@@ -27,11 +32,6 @@ export default function Navigation() {
                 <span className="text-black cursor-default">CV</span>
             ) : (
                 <Link href="/CV">CV</Link>
-            )}
-            {isGameDev ? (
-                <span className="text-black cursor-default">GameDev</span>
-            ) : (
-                <Link href="/gamedev">GameDev</Link>
             )}
             {isBlog ? (
                 <span className="text-black cursor-default">Blog</span>
