@@ -15,6 +15,18 @@ export default function Home() {
                     <h1 className="text-center text-5xl">Oskars Website</h1>
                     <h3 className="text-center text-1xl mt-1">My little corner of the internet.</h3>
                 </div>
+                <div>
+                    <h2 className="text-4xl">Blog</h2>
+                    <div>
+                        {slugs.map((slug: string) => {
+                            return (
+                                <div key={slug} className="capitalize text-lg">
+                                    <Link href={'/blog/' + slug}>{slug}</Link>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
                 {recentGames.length > 0 && (
                     <div>
                         <div className="flex justify-between items-baseline mb-3">
@@ -30,18 +42,6 @@ export default function Home() {
                         </div>
                     </div>
                 )}
-                <div>
-                    <h2 className="text-4xl">Blog</h2>
-                    <div>
-                        {slugs.map((slug: string) => {
-                            return (
-                                <div key={slug} className="capitalize text-lg">
-                                    <Link href={'/blog/' + slug}>{slug}</Link>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
             </div>
         </DefaultLayout>
     );

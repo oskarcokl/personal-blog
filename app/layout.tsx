@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Navigation />
                 <hr className="max-w-prose my-3 mx-auto h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10 no-print" />
                 <main className="print:m-0 print:p-0">{children}</main>
-                <footer className="no-print">
+                <footer className="no-print mb-6">
                     <h4 className="text-center text-gray-400">
                         contact: <a href="mailto: oskar.cokl@gmail.com">oskar.cokl@gmail.com</a>
                     </h4>

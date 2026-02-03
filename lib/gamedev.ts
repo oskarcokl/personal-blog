@@ -44,21 +44,23 @@ export function getGamesByCategory(category: GameCategory): GameEntry[] {
 
     const files = fs.readdirSync(categoryDir).filter((f) => f.endsWith(".md"));
 
-    const entries = files.map((filename) => {
+    const entries = files
+        .filter((filename) => filename !== "example-game.md")
+        .map((filename) => {
         const slug = filename.replace(".md", "");
         const filePath = path.join(categoryDir, filename);
         const fileContent = fs.readFileSync(filePath, "utf-8");
         const parsed = matter(fileContent);
         const htmlContent = marked.parse(parsed.content) as string;
 
-        return {
+            return {
             slug,
             category,
             metadata: parsed.data as GameMetadata,
             content: parsed.content,
             htmlContent,
-        };
-    });
+            };
+        });
 
     return entries.sort(
         (a, b) =>

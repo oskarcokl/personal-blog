@@ -18,6 +18,12 @@ export default function Navigation() {
             ) : (
                 <Link href="/">Home</Link>
             )}
+            <Link
+                href="/blog"
+                className={isBlog ? "!text-black cursor-default" : undefined}
+            >
+                Blog
+            </Link>
             {isGameDev ? (
                 <span className="text-black cursor-default">Game Development</span>
             ) : (
@@ -32,11 +38,6 @@ export default function Navigation() {
                 <span className="text-black cursor-default">CV</span>
             ) : (
                 <Link href="/CV">CV</Link>
-            )}
-            {isBlog ? (
-                <span className="text-black cursor-default">Blog</span>
-            ) : (
-                <span className="cursor-default text-gray-400">Blog</span>
             )}
         </nav>
     )

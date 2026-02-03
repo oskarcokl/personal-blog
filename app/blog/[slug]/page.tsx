@@ -20,6 +20,13 @@ export default async function Page({params} : {params: Promise<{slug: string}>})
     const post = fs.readFileSync(path.join("posts", slug + ".md"));
     const parsedContents = matter(post);
     const html = marked.parse(parsedContents.content);
+    const created = parsedContents.data?.created
+        ? new Date(parsedContents.data.created).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        })
+        : null;
 
     const markup = { __html: html };
 
@@ -28,14 +35,16 @@ export default async function Page({params} : {params: Promise<{slug: string}>})
             <DefaultLayout>
                 <div>
                     <h1 className="text-center text-4xl">{parsedContents.data.title}</h1>
-                    <div className="mt-5" dangerouslySetInnerHTML={markup} />
+                    {created && (
+                        <p className="text-center text-sm italic text-gray-500 mt-1">
+                            Created {created}
+                        </p>
+                    )}
+                    <div className="mt-5 prose prose-neutral max-w-none" dangerouslySetInnerHTML={markup} />
                 </div>
                 <div className="flex flex-row justify-between mt-10">
                     <div>
                         <Link href="/">Back home</Link>
-                    </div>
-                    <div>
-                        <Link href="mailto: oskar.cokl@gmail.com">oskar.cokl@gmail.com</Link>
                     </div>
                 </div>
             </DefaultLayout>
