@@ -3,6 +3,7 @@ import matter from "gray-matter";
 import {marked} from "marked";
 import path from "path";
 import Link from "next/link";
+import Image from "next/image";
 import DefaultLayout from "@/components/DefaultLayout";
 
 
@@ -39,6 +40,18 @@ export default async function Page({params} : {params: Promise<{slug: string}>})
                         <p className="text-center text-sm italic text-gray-500 mt-1">
                             Created {created}
                         </p>
+                    )}
+                    {parsedContents.data.heroImage && (
+                        <div className="mt-6 mb-8">
+                            <Image
+                                src={parsedContents.data.heroImage}
+                                alt={parsedContents.data.heroImageAlt || parsedContents.data.title}
+                                width={1200}
+                                height={630}
+                                className="w-full h-auto rounded-lg"
+                                priority
+                            />
+                        </div>
                     )}
                     <div className="mt-5 prose prose-neutral max-w-none" dangerouslySetInnerHTML={markup} />
                 </div>

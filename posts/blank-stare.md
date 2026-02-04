@@ -1,6 +1,7 @@
 ---
 title: "Blank stare"
 created: "2026-02-03"
+heroImage: "/images/blank-stare-hero.png"
 ---
 
 It's the end of the work day and I can do nothing but blankly stare at the computer monitor in a catatonic state.
