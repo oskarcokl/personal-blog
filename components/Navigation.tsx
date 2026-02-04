@@ -9,7 +9,7 @@ export default function Navigation() {
     const isNow = pathname === '/now'
     const isCV = pathname.includes('/CV')
     const isGameDev = pathname.startsWith('/gamedev')
-    const isBlog = pathname.split('/')[1] === 'blog'
+    const isBlog = pathname === '/blog'
 
     return (
         <nav className="flex gap-3 justify-center no-print mt-3">
@@ -18,12 +18,11 @@ export default function Navigation() {
             ) : (
                 <Link href="/">Home</Link>
             )}
-            <Link
-                href="/blog"
-                className={isBlog ? "!text-black cursor-default" : undefined}
-            >
-                Blog
-            </Link>
+            {isBlog ? (
+                <span className="text-black cursor-default">Blog</span>
+            ) : (
+                <Link href="/blog">Blog</Link>
+            )}
             {isGameDev ? (
                 <span className="text-black cursor-default">Game Development</span>
             ) : (

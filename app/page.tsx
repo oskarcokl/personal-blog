@@ -2,29 +2,40 @@ import DefaultLayout from '@/components/DefaultLayout';
 import GameCard from '@/components/GameCard';
 import { getAllGames } from '@/lib/gamedev';
 import fs from 'fs';
+import matter from 'gray-matter';
 import Link from 'next/link';
 
 export default function Home() {
-    const slugs = fs.readdirSync('posts').map((filename) => filename.replace('.md', ''));
+    const posts = fs
+        .readdirSync('posts')
+        .filter((filename) => filename.endsWith('.md'))
+        .map((filename) => {
+            const slug = filename.replace('.md', '');
+            const fileContent = fs.readFileSync(`posts/${filename}`, 'utf-8');
+            const parsed = matter(fileContent);
+
+            return {
+                slug,
+                title: (parsed.data?.title as string) ?? slug,
+            };
+        });
     const recentGames = getAllGames().slice(0, 3);
 
     return (
         <DefaultLayout>
             <div className="flex flex-col gap-y-20">
                 <div>
-                    <h1 className="text-center text-5xl">Oskars Website</h1>
+                    <h1 className="text-center text-5xl">Oskar Čokl</h1>
                     <h3 className="text-center text-1xl mt-1">My little corner of the internet.</h3>
                 </div>
                 <div>
                     <h2 className="text-4xl">Blog</h2>
                     <div>
-                        {slugs.map((slug: string) => {
-                            return (
-                                <div key={slug} className="capitalize text-lg">
-                                    <Link href={'/blog/' + slug}>{slug}</Link>
-                                </div>
-                            );
-                        })}
+                        {posts.map((post) => (
+                            <div key={post.slug} className="text-lg">
+                                <Link href={'/blog/' + post.slug}>{post.title}</Link>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 {recentGames.length > 0 && (
